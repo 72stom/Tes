@@ -1,4 +1,4 @@
-# Language file you want to use
+```# Language file you want to use
 Language: EN
 Economy:
   # Enable or disable CMI economy in general
