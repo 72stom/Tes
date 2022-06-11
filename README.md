@@ -14,37 +14,31 @@
 # Karma-Shop format -> 'karma:coins' which refers to how much karma needed to exchange for the coins amount
 # Anti Seeker Quit is an option to make it so if the last seeker in a game LEFT the arena, and there are more than or same as x hider, pick a random hider and make them the seeker
 # x is replaced with 'Anti-Seeker-Quit-Activation-Hiders-Required'
-# If you enable Check-For-General-Notifications, I will be able to send you in-game notifications of events such as plugin sales or important messages.
-# These notifications only show once every 6 hours upon joining the server.
 
-Check-For-Updates: true
-Check-For-General-Notifications: true
-Disguise-Players-As-Blocks: true
 Fall-Damage-Enabled: false
 Starting-Hider-Chance: 60
 Ending-Length: 10
 Leap-Cooldown: 12
-Leap-Multiplier: 1.8
 Update-Block-Behind-Sign: true
 Anti-Seeker-Quit: true
 Anti-Seeker-Quit-Activation-Hiders-Required: 5
 Throwable-Tnt-Cooldown: 15
-Disguise-Detector-Cooldown: 60
+Disguise-Detector-Cooldown: 120
 Seekers-Initial-Spawn-Delay: 20
 Seekers-Respawn-Delay: 15
 Join-Gui-Enabled: true
 Reward-Starting-Seekers: true
 Teleport-To-Global-Lobby-On-Leave: false
 Display-Arena-State-On-Block: true
-Arena-Scoreboard-Enabled: true
 Modify-Chat: true
-Chat-Modification: '&7[%rank%]'
-Spectate-Full-Games: false
+Chat-Modification: '&6%rank%'
+Spectate-Full-Games: true
 Top-Signs-Update-Every: 20
 use-UUID: false
-use-Vault: false
+use-Vault: true
 Karma-Enabled: true
 Send-Message-On-Seekers-Release: true
+Check-For-Updates: true
 Coins-Earned:
   Hider-Kill-Seeker: 5
   Seeker-Kill-Hider: 3
@@ -63,7 +57,7 @@ Coins-Timer:
   Give-Coins-Every-In-Seconds: 45
   Amount: 5
 Commands-Executed-On-Winners:
-- has coins add %player% 15
+- has coins add %player% 50
 Trails:
   enabled: true
   size: 2
@@ -88,18 +82,21 @@ MySQL:
   username: root
   password: root
 Titles:
+  fadeIn: 10
+  stayTime: 40
+  fadeOut: 10
   player_join:
     enabled: true
-    text: '&bYou have joined the game'
+    text: '&aOk Bergabung'
   player_leave:
     enabled: true
-    text: '&bYou have left the game!'
+    text: '&cAnda telah keluar dalam permainan!'
   achievement_unlock:
     enabled: true
-    text: '&aAchievement Unlocked!'
+    text: '&aPencapaian terbuka!'
   game_end:
     enabled: true
-    text: '&aThanks for playing!'
+    text: '&aTerimah kasih telah bermain!'
 BungeeMode:
   enabled: false
   voting_enabled: true
@@ -182,17 +179,17 @@ Items:
     enabled: true
   leave:
     enabled: true
-    item: 'MAGMA_CREAM : 1 : name:&cQuit'
+    item: 'MAGMA_CREAM : 1 : name:&cKeluar'
   inventory_back:
     enabled: true
-    item: 'SLIME_BALL : 1 : name:&cBack!'
+    item: 'SLIME_BALL : 1 : name:&cKembali!'
   shop:
     enabled: true
-    item: 'DIAMOND : 1 : name:&bShop'
+    item: 'DIAMOND : 1 : name:&bToko'
   vote:
-    item: 'BEACON : 1 : name:&bVote!'
+    item: 'BEACON : 1 : name:&bVoting!'
   trails:
-    item: 'ENCHANTED_BOOK : 1 : name:&eTrails &6[VIP]'
+    item: 'ENCHANTED_BOOK : 1 : name:&eEfek'
 Allowed-Commands:
 - hideandseek
 - has
@@ -202,9 +199,19 @@ Allowed-Commands:
 - helpop
 Executed-Commands:
   Arena-Countdown:
-  - broadcast Arena %arena% is about to start in %seconds% seconds!
+  - broadcast Arena %arena% akan segera dimulai %seconds% detik lagi!
   Arena-Start:
   - time set 1000 %world%
+Powerups:
+  boom: true
+  deathlord: true
+  boost: true
+  deathroom: true
+  timelord: true
+  coins:
+    enabled: true
+    min: 30
+    max: 60
 Achievements:
   enabled: true
   seekers-killed:
@@ -252,20 +259,29 @@ Custom-Maps:
   Winner-Map:
     enabled: true
     texts:
-    - Congratulations
-    - '   For winning!!!'
-    image: https://i.imgur.com/FrgIjmJ.png
+    - ' Selamat'
+    - ' Untuk pemenang!!!'
+    image: https://i.imgur.com/EaCCLfz.png
   Loser-Map:
     enabled: true
     texts:
-    - '  Thank you for'
-    - '   Participation!'
-    image: ''
-Play-Again-Message:
+    - ' Terima kasih untuk'
+    - ' Partisipasi!'
+    image: https://i.imgur.com/EaCCLfz.png
+Load-Arenas-Delay: 15
+Load-Shop-Delay: 10
+Load-Global-Lobby-Delay: 10
+Load-Titles-Delay: 20
+Spectate-Gamemode-Delay: 15
+Winners-Map:
   enabled: true
-  header: '&b&m---------&e Hide and Seek &b&m---------'
-  content:
-  - ' '
-  - '          &6Click to play again!'
-  - ' '
-  footer: '&b&m--------------------------------'
+  display_image: true
+  image_url: https://i.imgur.com/EaCCLfz.png
+Global-Lobby:
+  delay: 15
+  world: Spawn
+  x: 0.5
+  y: 71
+  z: 35.5
+  yaw: -180.14984
+  pitch: 0.7500093
